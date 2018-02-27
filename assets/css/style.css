@@ -1,10 +1,10 @@
 .mainBody {
-  font-family: 'Amatic SC';
+  font-family: 'Amatic SC', 'Source Sans Pro', sans-serif;
 }
 
 .jumbotron {
   background: transparent !important;
-  font-family: 'Amatic SC';
+  font-family: 'Amatic SC', 'Source Sans Pro', sans-serif;
   font-size: 50px;
   height: 100px;
   color: #f19339;
