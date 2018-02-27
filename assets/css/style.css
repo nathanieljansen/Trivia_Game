@@ -30,9 +30,16 @@
   font-size: 35px;
 }
 
-.timer {
-  font-size: 60px;
-  color: #d63226;
+.footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  line-height: 60px;
+  background-color: #d93529;
+  font-size: 55px;
+
 }
 
 @media screen and (min-width: 320px) {
@@ -63,7 +70,7 @@
     font-size: 20px;
   }
   .timer {
-    margin-top: 275px;
+    margin-top: 325px;
   }
 }
 
@@ -77,5 +84,11 @@
   }
   .timer {
     margin-top: 200px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .timer {
+    margin-top: 275px;
   }
 }
