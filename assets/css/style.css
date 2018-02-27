@@ -33,6 +33,7 @@
 .footer {
   color: white;
   position: fixed;
+  margin-left: -15px;
   bottom: 0;
   height: 75px;
   line-height: 60px;
