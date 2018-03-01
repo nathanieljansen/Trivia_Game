@@ -26,7 +26,7 @@
 }
 
 .question {
-  color: #d58ab2;
+  color: black;
 }
 
 .answers {
@@ -63,17 +63,17 @@
   .jumbotron {
     font-size: 40px;
   }
-  .questionHeader, question {
-    font-size: 25px;
+  .questionHeader, .question {
+    font-size: 35px;
   }
   .answers {
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 30px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .questionHeader, question {
+  .questionHeader, .question {
     font-size: 35px;
   }
   .answers {
