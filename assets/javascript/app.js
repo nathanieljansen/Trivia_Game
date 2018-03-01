@@ -51,7 +51,8 @@ $(function () {
       console.log(counter)
       $(".countDown").html(counter)
       if (counter === 0) {
-        $(".countDown").html("You Lost")
+        $(".question").html("Ran out of Time")
+        $(".answersDiv").html("")
         clearInterval(interval);
       }
     }, 1000);
