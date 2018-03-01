@@ -10,6 +10,11 @@
   color: #f19339;
 }
 
+.startGame {
+  color: white;
+  font-size: 25px;
+}
+
 .questionHeader {
   margin-top: 0px;
   font-size: 50px;
