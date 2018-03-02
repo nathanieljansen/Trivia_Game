@@ -3,7 +3,7 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var notAnswered = 0;
 var userPick
-var counter = 5;
+var counter = 30;
 
 var questionsArr = [
   {
@@ -12,11 +12,11 @@ var questionsArr = [
     correctAnswer: 3
   },
 
-  {
-    question: "what does this do?",
-    answers: ["Nothing", "Something", "Haha", "Right"],
-    correctAnswer: 1
-  }
+  // {
+  //   question: "what does this do?",
+  //   answers: ["Nothing", "Something", "Haha", "Right"],
+  //   correctAnswer: 1
+  // }
 ]
 var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
 
@@ -33,7 +33,7 @@ $(function () {
     $(this).unbind();
     $(this).css("background-color", "#72f7fa")
     $(".footer").show();
-    // timer()
+    timer()
     $(".question").html(randomQuestion.question);
     var answers = [];
     var theseAnswers = randomQuestion.answers;
@@ -51,7 +51,10 @@ $(function () {
       var index = $(this).index();
       console.log(index);
       if (index === randomQuestion.correctAnswer) {
-        $(".question").html("Nice!!!")
+        $(".question").html("Nice!!!");
+      }
+      else if (index != randomQuestion.correctAnswer) {
+        $(".question").html("Nope!");
       }
     })
   })
