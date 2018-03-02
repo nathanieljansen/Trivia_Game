@@ -33,7 +33,7 @@ $(function () {
     $(this).unbind();
     $(this).css("background-color", "#72f7fa")
     $(".footer").show();
-    timer()
+    // timer()
     $(".question").html(randomQuestion.question);
     var answers = [];
     var theseAnswers = randomQuestion.answers;
@@ -48,9 +48,10 @@ $(function () {
       })
 
     $(".answerOption").on("click", function () {
-      console.log(this)
-      if (this === questionsArr.answers) {
-        console.log("WIN")
+      var index = $(this).index();
+      console.log(index);
+      if (index === randomQuestion.correctAnswer) {
+        $(".question").html("Nice!!!")
       }
     })
   })
