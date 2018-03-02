@@ -7,19 +7,18 @@ var counter = 30;
 
 var questionsArr = [
   {
-    question: "who is president?",
+    question: "Who is president?",
     answers: ["Bill Maher", "Obama", "Brittany Spears", "Trump"],
     correctAnswer: 3
   },
 
-  // {
-  //   question: "what does this do?",
-  //   answers: ["Nothing", "Something", "Haha", "Right"],
-  //   correctAnswer: 1
-  // }
+  {
+    question: "What does this do?",
+    answers: ["Nothing", "Something", "Haha", "Right"],
+    correctAnswer: 1
+  }
 ]
 var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
-
 
 $(function () {
 
@@ -39,9 +38,8 @@ $(function () {
     var theseAnswers = randomQuestion.answers;
     for (var i = 0; i < theseAnswers.length; i++) {
       answers.push('<p class=" answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
-
-      
     }
+    
     $(".answersDiv").html(answers);
     $(".answerOption").hover(function (e) {
         $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent")
