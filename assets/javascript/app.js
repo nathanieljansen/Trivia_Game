@@ -54,6 +54,7 @@ $(function () {
     })
 
     $(".answersDiv").on("click", ".answerOption", function () {
+      $(this).unbind();
       var index = $(this).index();
       if (index === currentQuestion.correctAnswer) {
         $(".countDown").html("Nice!!!");
@@ -61,6 +62,7 @@ $(function () {
         nextQuestion();
       }
       else if (index != currentQuestion.correctAnswer) {
+        $(this).unbind();
         $(".countDown").html("Nope!");
         wrongAnswers++;
         nextQuestion();
