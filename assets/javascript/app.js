@@ -78,11 +78,12 @@ $(function () {
 
     function nextQuestion() {
       clearInterval(interval);
+      counter = 21;
+      interval = 0;
       timer();
       currentQuestion = questionGen();
       $(".answerOption").empty()
       round++;
-      console.log(round);
       $(".question").html(currentQuestion.question);
       var answers = [];
       var theseAnswers = currentQuestion.answers;
@@ -97,6 +98,7 @@ $(function () {
     }
 
     function timer() {
+      
       counter = 21;
       interval = 0;
       interval = setInterval(function () {
@@ -116,9 +118,14 @@ $(function () {
         }
         if (counter === 0) {
           $(".countDown").html(counter + " Seconds Left")
+          $(".wrongRight").show();
+          $(".wrongRight").html("Out of Time!!");
+          $(".answersDiv").hide()
+          $(".question").hide()
+          nextQuestion();
+          // $(".answersDiv").show()
+          // $(".question").show()
           notAnswered++;
-          $(".question").html("Ran out of Time")
-          clearInterval(interval);
         }
       }, 1000);
 
