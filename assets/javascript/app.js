@@ -5,6 +5,7 @@ var notAnswered = 0;
 var round = 0;
 var counter = 20;
 var interval;
+
 var questionsArr = [
   {
     question: "Who is the president?",
@@ -23,14 +24,6 @@ randomArray = [0,1,2,3,4,5]
 function questionGen() {
 var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
 return randomQuestion;
-}
-
-function answerGen(){
-  var answers = [];
-  var theseAnswers = currentQuestion.answers;
-  for (var i = 0; i < theseAnswers.length; i++) {
-    answers.push('<p class = "answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
-  }
 }
 
 $(function () {
@@ -79,6 +72,7 @@ $(function () {
       clearInterval(interval);
       timer();
       currentQuestion = questionGen();
+      $(".answerOption").empty()
       round++;
       console.log(round);
       $(".question").html(currentQuestion.question);
@@ -86,6 +80,7 @@ $(function () {
       var theseAnswers = currentQuestion.answers;
       for (var i = 0; i < theseAnswers.length; i++) {
         answers.push('<p class = "answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
+        $(".answersDiv").html(answers);
       }
     }
 
