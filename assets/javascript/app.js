@@ -70,7 +70,7 @@ $(function () {
         $(".wrongRight").show();
         $(".wrongRight").html("Nah!!!");
         $(".answersDiv").hide()
-        
+        $(".question").hide()
         wrongAnswers++;
         nextQuestion();
       }
