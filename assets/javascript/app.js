@@ -64,6 +64,7 @@ $(function start() {
     })
 
     $(".answersDiv").on("click", ".answerOption", function () {
+      $(".countDown").off("click");
       $(this).unbind();
       var index = $(this).index();
       if (index === currentQuestion.correctAnswer) {
