@@ -69,6 +69,7 @@ $(function () {
     })
 
     function nextQuestion() {
+      
       clearInterval(interval);
       timer();
       currentQuestion = questionGen();
