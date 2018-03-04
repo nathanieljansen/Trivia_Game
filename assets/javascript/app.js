@@ -29,10 +29,6 @@ var questionsArr = [
 function questionGen() {
   var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
   return randomQuestion;
-  // for (var i = questionsArr.length - 1; i >= 0; i--) {
-  //   questionsArr.splice(Math.floor(Math.random() * questionsArr.length), 1);
-  //   console.log(questionsArr);
-  // }
 }
 
 $(function start() {
@@ -116,6 +112,7 @@ $(function start() {
         correctGuess = 0;
         wrongAnswers = 0;
         notAnswered = 0;
+        round = 0;
         $(".score").hide();
         $(".countDown").empty();
       }
