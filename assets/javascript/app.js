@@ -61,6 +61,7 @@ $(function () {
         $(".wrongRight").show();
         $(".wrongRight").html("Nice!!!");
         $(".answersDiv").hide()
+        $(".question").hide()
         correctGuess++;
         nextQuestion();
       }
@@ -69,6 +70,7 @@ $(function () {
         $(".wrongRight").show();
         $(".wrongRight").html("Nah!!!");
         $(".answersDiv").hide()
+        
         wrongAnswers++;
         nextQuestion();
       }
@@ -95,7 +97,7 @@ $(function () {
     }
 
     function timer() {
-      counter = 22;
+      counter = 21;
       interval = 0;
       interval = setInterval(function () {
         counter--;
@@ -105,6 +107,7 @@ $(function () {
         if (counter <= "20") {
           $(".answersDiv").show()
           $(".wrongRight").hide();
+          $(".question").show()
           console.log(counter)
           console.log(interval)
         }
@@ -115,7 +118,6 @@ $(function () {
           $(".countDown").html(counter + " Seconds Left")
           notAnswered++;
           $(".question").html("Ran out of Time")
-          $(".answersDiv").html("")
           clearInterval(interval);
         }
       }, 1000);
