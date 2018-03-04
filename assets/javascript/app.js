@@ -3,7 +3,7 @@ var correctGuess = 0;
 var wrongAnswers = 0;
 var notAnswered = 0;
 var round = 0;
-var counter = 20;
+var counter = 21;
 var interval;
 var questionsArr = [
   {
@@ -18,11 +18,11 @@ var questionsArr = [
     correctAnswer: 1
   }
 ]
-randomArray = [0,1,2,3,4,5]
+// randomArray = [0,1,2,3,4,5]
 
 function questionGen() {
-var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
-return randomQuestion;
+  var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
+  return randomQuestion;
 }
 
 $(function () {
@@ -32,6 +32,7 @@ $(function () {
     $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent")
   })
   $(".footer").hide();
+  $(".wrongRight").hide();
 
   $(".question").on("click", function () {
     $(this).unbind();
@@ -57,7 +58,9 @@ $(function () {
       $(this).unbind();
       var index = $(this).index();
       if (index === currentQuestion.correctAnswer) {
-        $(".countDown").html("Nice!!!");
+        $(".wrongRight").show();
+        $(".wrongRight").html("Nice!!!");
+        $(".answersDiv").hide()
         correctGuess++;
         nextQuestion();
       }
@@ -84,17 +87,24 @@ $(function () {
         $(".answersDiv").html(answers);
         $(".answerOption").hover(function (e) {
           $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent");
+
         })
       }
     }
 
     function timer() {
-      counter = 21;
+      counter = 22;
       interval = 0;
       interval = setInterval(function () {
         counter--;
         if (counter > 1) {
           $(".countDown").html(counter + " Seconds Left")
+        }
+        if (counter <= "20") {
+          $(".answersDiv").show()
+          $(".wrongRight").hide();
+          console.log(counter)
+          console.log(interval)
         }
         if (counter === 1) {
           $(".countDown").html(counter + " Second Left")
@@ -107,6 +117,7 @@ $(function () {
           clearInterval(interval);
         }
       }, 1000);
+
 
     }
 

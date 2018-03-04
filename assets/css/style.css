@@ -34,6 +34,13 @@
   font-size: 35px;
 }
 
+.wrongRight {
+  color: white;
+  font-size: 100px;
+  /* background-color: azure; */
+
+}
+
 .footer {
   color: white;
   position: fixed;
