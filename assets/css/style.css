@@ -38,7 +38,6 @@
   color: white;
   font-size: 100px;
   /* background-color: azure; */
-
 }
 
 .footer {
@@ -64,6 +63,9 @@
     margin-top: 10px;
     font-size: 20px;
   }
+  .wrongRight {
+    font-size: 50px;
+  }
 }
 
 @media screen and (min-width: 425px) {
@@ -76,6 +78,9 @@
   .answers {
     margin-top: 10px;
     font-size: 30px;
+  }
+  .wrongRight {
+    font-size: 50px;
   }
 }
 
