@@ -16,22 +16,35 @@ var questionsArr = [
     question: "What does this do?",
     answers: ["Nothing", "Something", "Haha", "Right"],
     correctAnswer: 1
+  },
+
+  {
+    question: "What are you doing?",
+    answers: ["Trying new things", "Watching TV", "Sleeping", "Nothing"],
+    correctAnswer: 3
   }
 ]
-// randomArray = [0,1,2,3,4,5]
+
 
 function questionGen() {
   var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
   return randomQuestion;
+  // for (var i = questionsArr.length - 1; i >= 0; i--) {
+  //   questionsArr.splice(Math.floor(Math.random() * questionsArr.length), 1);
+  //   console.log(questionsArr);
+  // }
 }
 
-$(function () {
+$(function start() {
+
+  
 
   $(".question").html("Click Here to Start the Game!");
   $(".question").hover(function (e) {
     $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent")
   })
   $(".footer").hide();
+  $(".score").hide();
   $(".wrongRight").hide();
 
   $(".question").on("click", function () {
@@ -63,7 +76,14 @@ $(function () {
         $(".answersDiv").hide()
         $(".question").hide()
         correctGuess++;
-        nextQuestion();
+        round ++;
+        if (round >= 4) {
+          gameOver();
+
+        }
+         else {
+          nextQuestion();
+        }
       }
       else if (index != currentQuestion.correctAnswer) {
         $(this).unbind();
@@ -72,9 +92,35 @@ $(function () {
         $(".answersDiv").hide()
         $(".question").hide()
         wrongAnswers++;
-        nextQuestion();
+        round ++;
+        if (round >= 4) {
+         gameOver();
+        }
+        else {
+          nextQuestion();
+        }
       }
     })
+
+    function gameOver() {
+      $(".score").show();
+      $(".wrongRight").html("Game Over")
+      $(".question").hide();
+      $(".countDown").html("Click to Start Again");
+      $(".score").html("Correct:" + correctGuess + " Wrong:" + wrongAnswers + " Not Answered:" + notAnswered);
+      clearInterval(interval);
+      counter = 21;
+      interval = 0;
+      $(".countDown").on("click", function (){
+        nextQuestion();
+        correctGuess = 0;
+        wrongAnswers = 0;
+        notAnswered = 0;
+        $(".score").hide();
+        $(".countDown").empty();
+      }
+      )
+    }
 
     function nextQuestion() {
       clearInterval(interval);
@@ -83,7 +129,6 @@ $(function () {
       timer();
       currentQuestion = questionGen();
       $(".answerOption").empty()
-      round++;
       $(".question").html(currentQuestion.question);
       var answers = [];
       var theseAnswers = currentQuestion.answers;
@@ -110,22 +155,26 @@ $(function () {
           $(".answersDiv").show()
           $(".wrongRight").hide();
           $(".question").show()
-          console.log(counter)
-          console.log(interval)
         }
         if (counter === 1) {
           $(".countDown").html(counter + " Second Left")
         }
         if (counter === 0) {
+          notAnswered++;
+          round++;
           $(".countDown").html(counter + " Seconds Left")
           $(".wrongRight").show();
           $(".wrongRight").html("Out of Time!!");
           $(".answersDiv").hide()
           $(".question").hide()
+          if (round >= 4) {
+            gameOver();
+            console.log(round)
+
+          }
+          else {
           nextQuestion();
-          // $(".answersDiv").show()
-          // $(".question").show()
-          notAnswered++;
+          }
         }
       }, 1000);
 
