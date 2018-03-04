@@ -5,7 +5,6 @@ var notAnswered = 0;
 var round = 0;
 var counter = 20;
 var interval;
-
 var questionsArr = [
   {
     question: "Who is the president?",
@@ -69,7 +68,6 @@ $(function () {
     })
 
     function nextQuestion() {
-      
       clearInterval(interval);
       timer();
       currentQuestion = questionGen();
@@ -82,6 +80,9 @@ $(function () {
       for (var i = 0; i < theseAnswers.length; i++) {
         answers.push('<p class = "answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
         $(".answersDiv").html(answers);
+        $(".answerOption").hover(function (e) {
+          $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent");
+        })
       }
     }
 
