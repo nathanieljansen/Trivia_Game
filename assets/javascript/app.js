@@ -1,13 +1,13 @@
 
-var correctAnswers = 0;
+var correctGuess = 0;
 var wrongAnswers = 0;
 var notAnswered = 0;
-var userPick
-var counter = 30;
-
+var round = 0;
+var counter = 20;
+var interval;
 var questionsArr = [
   {
-    question: "Who is president?",
+    question: "Who is the president?",
     answers: ["Bill Maher", "Obama", "Brittany Spears", "Trump"],
     correctAnswer: 3
   },
@@ -18,7 +18,20 @@ var questionsArr = [
     correctAnswer: 1
   }
 ]
+randomArray = [0,1,2,3,4,5]
+
+function questionGen() {
 var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
+return randomQuestion;
+}
+
+function answerGen(){
+  var answers = [];
+  var theseAnswers = currentQuestion.answers;
+  for (var i = 0; i < theseAnswers.length; i++) {
+    answers.push('<p class = "answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
+  }
+}
 
 $(function () {
 
@@ -32,42 +45,76 @@ $(function () {
     $(this).unbind();
     $(this).css("background-color", "#72f7fa")
     $(".footer").show();
-    timer()
-    $(".question").html(randomQuestion.question);
+    round++;
+    console.log(round);
+    timer();
+    var currentQuestion = questionGen()
+    $(".question").html(currentQuestion.question);
     var answers = [];
-    var theseAnswers = randomQuestion.answers;
+    var theseAnswers = currentQuestion.answers;
     for (var i = 0; i < theseAnswers.length; i++) {
-      answers.push('<p class=" answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
+      answers.push('<p class = "answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
     }
-    
+
     $(".answersDiv").html(answers);
     $(".answerOption").hover(function (e) {
-        $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent")
-      })
+      $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent");
+    })
 
-    $(".answerOption").on("click", function () {
+    $(".answersDiv").on("click", ".answerOption", function () {
       var index = $(this).index();
-      console.log(index);
-      if (index === randomQuestion.correctAnswer) {
-        $(".question").html("Nice!!!");
+      if (index === currentQuestion.correctAnswer) {
+        $(".countDown").html("Nice!!!");
+        correctGuess++;
+        nextQuestion();
       }
-      else if (index != randomQuestion.correctAnswer) {
-        $(".question").html("Nope!");
+      else if (index != currentQuestion.correctAnswer) {
+        $(".countDown").html("Nope!");
+        wrongAnswers++;
+        nextQuestion();
       }
     })
-  })
 
-  function timer() {
-    var interval = setInterval(function () {
-      counter--;
-      console.log(counter)
-      $(".countDown").html(counter)
-      if (counter === 0) {
-        $(".question").html("Ran out of Time")
-        $(".answersDiv").html("")
-        clearInterval(interval);
+    function nextQuestion() {
+      clearInterval(interval);
+      timer();
+      currentQuestion = questionGen();
+      round++;
+      console.log(round);
+      $(".question").html(currentQuestion.question);
+      var answers = [];
+      var theseAnswers = currentQuestion.answers;
+      for (var i = 0; i < theseAnswers.length; i++) {
+        answers.push('<p class = "answerOption col-md-6 col-sm-6 col-6" data-answer' + [i] + '>' + theseAnswers[i] + '</p>');
       }
-    }, 1000);
-  }
+    }
+
+    function timer() {
+      counter = 21;
+      interval = 0;
+      interval = setInterval(function () {
+        counter--;
+        if (counter > 1) {
+          $(".countDown").html(counter + " Seconds Left")
+        }
+        if (counter === 1) {
+          $(".countDown").html(counter + " Second Left")
+        }
+        if (counter === 0) {
+          $(".countDown").html(counter + " Seconds Left")
+          notAnswered++;
+          $(".question").html("Ran out of Time")
+          $(".answersDiv").html("")
+          clearInterval(interval);
+        }
+      }, 1000);
+
+    }
+
+
+
+  });
+
+
 
 });
