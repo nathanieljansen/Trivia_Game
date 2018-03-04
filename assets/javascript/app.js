@@ -66,7 +66,9 @@ $(function () {
       }
       else if (index != currentQuestion.correctAnswer) {
         $(this).unbind();
-        $(".countDown").html("Nope!");
+        $(".wrongRight").show();
+        $(".wrongRight").html("Nah!!!");
+        $(".answersDiv").hide()
         wrongAnswers++;
         nextQuestion();
       }
