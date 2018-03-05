@@ -139,6 +139,7 @@ $(function start() {
     }
 
     function nextQuestion() {
+      $(".countDown").off("click");
       clearInterval(interval);
       counter = 21;
       interval = 0;
