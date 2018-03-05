@@ -131,6 +131,9 @@ $(function start() {
         $(".wrongRight").empty();
         $(".score").hide();
         $(".countDown").empty();
+        $(".correctAns").hide();
+        $(".wrongAns").hide();
+        $(".notAns").hide();
       }
       )
     }
