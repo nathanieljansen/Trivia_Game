@@ -52,7 +52,7 @@
   font-size: 40px;
 }
 
-.score {
+.correctAns, .wrongAns, .notAns {
   color: white;
   position: fixed;
   bottom: 2px;

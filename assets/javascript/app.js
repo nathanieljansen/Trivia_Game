@@ -42,6 +42,9 @@ $(function start() {
   $(".footer").hide();
   $(".score").hide();
   $(".wrongRight").hide();
+  $(".correctAns").hide();
+  $(".wrongAns").hide();
+  $(".notAns").hide();
 
   $(".question").on("click", function () {
     $(this).unbind();
@@ -68,6 +71,9 @@ $(function start() {
       $(this).unbind();
       var index = $(this).index();
       if (index === currentQuestion.correctAnswer) {
+        $(".correctAns").hide();
+        $(".wrongAns").hide();
+        $(".notAns").hide();
         $(".wrongRight").show();
         $(".wrongRight").html("Nice!!!");
         $(".answersDiv").hide()
@@ -84,6 +90,9 @@ $(function start() {
       }
       else if (index != currentQuestion.correctAnswer) {
         $(this).unbind();
+        $(".correctAns").hide();
+        $(".wrongAns").hide();
+        $(".notAns").hide();
         $(".wrongRight").show();
         $(".wrongRight").html("Nah!!!");
         $(".answersDiv").hide()
@@ -100,7 +109,12 @@ $(function start() {
     })
 
     function gameOver() {
-      $(".score").show();
+      $(".correctAns").show();
+      $(".wrongAns").show();
+      $(".notAns").show();
+      $(".correctAns").html("Correct " + correctGuess);
+      $(".wrongAns").html("Wrong " + wrongAnswers);
+      $(".notAns").html("Not Answered " + notAnswered);
       $(".wrongRight").html("Game Over")
       $(".question").hide();
       $(".countDown").html("Click to Start Again");
@@ -114,6 +128,7 @@ $(function start() {
         wrongAnswers = 0;
         notAnswered = 0;
         round = 0;
+        $(".wrongRight").empty();
         $(".score").hide();
         $(".countDown").empty();
       }
