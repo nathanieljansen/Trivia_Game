@@ -21,7 +21,7 @@ var questionsArr = [
   {
     question: "In video gaming, what is the name of the princess whom Mario repeatedly stops Bowser from kidnapping?",
     answers: ["Princess Bowser", "Princess Carolyn", "Princess Peach", "Princess Cake"],
-    correctAnswer: 1
+    correctAnswer: 2
   },
 
   {
@@ -68,7 +68,7 @@ function questionGen() {
 
 $(function start() {
 
-  
+
 
   $(".question").html("Click Here to Start the Game!");
   $(".question").hover(function (e) {
@@ -118,7 +118,7 @@ $(function start() {
           gameOver();
 
         }
-         else {
+        else {
           nextQuestion();
         }
       }
@@ -134,7 +134,7 @@ $(function start() {
         wrongAnswers++;
         round++;
         if (round >= 11) {
-         gameOver();
+          gameOver();
         }
         else {
           nextQuestion();
@@ -156,7 +156,7 @@ $(function start() {
       clearInterval(interval);
       counter = 21;
       interval = 0;
-      $(".countDown").on("click", function (){
+      $(".countDown").on("click", function () {
         nextQuestion();
         correctGuess = 0;
         wrongAnswers = 0;
@@ -194,7 +194,7 @@ $(function start() {
     }
 
     function timer() {
-      
+
       counter = 21;
       interval = 0;
       interval = setInterval(function () {
@@ -224,7 +224,7 @@ $(function start() {
 
           }
           else {
-          nextQuestion();
+            nextQuestion();
           }
         }
       }, 1000);
