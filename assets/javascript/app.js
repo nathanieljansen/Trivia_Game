@@ -113,6 +113,7 @@ $(function start() {
         $(".answersDiv").hide()
         $(".question").hide()
         correctGuess++;
+        console.log(correctGuess);
         round++;
         if (round >= 11) {
           gameOver();
@@ -157,12 +158,12 @@ $(function start() {
       counter = 21;
       interval = 0;
       $(".countDown").on("click", function () {
-        nextQuestion();
         correctGuess = 0;
         wrongAnswers = 0;
         notAnswered = 0;
         round = 0;
-        rountd++;
+        nextQuestion();
+        round++;
         $(".wrongRight").empty();
         $(".score").hide();
         $(".countDown").empty();
