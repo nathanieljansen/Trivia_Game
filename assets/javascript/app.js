@@ -7,22 +7,57 @@ var counter = 21;
 var interval;
 var questionsArr = [
   {
-    question: "Who is the president?",
-    answers: ["Bill Maher", "Obama", "Brittany Spears", "Trump"],
+    question: "In video games, what colour is Pac-Man?",
+    answers: ["Pink", "Orange", "Blue", "Yellow"],
     correctAnswer: 3
   },
 
   {
-    question: "What does this do?",
-    answers: ["Nothing", "Something", "Haha", "Right"],
+    question: "How many square blocks is each game piece composed of in the game of Tetris?",
+    answers: ["4", "7", "6", "5"],
+    correctAnswer: 0
+  },
+
+  {
+    question: "In video gaming, what is the name of the princess whom Mario repeatedly stops Bowser from kidnapping?",
+    answers: ["Princess Bowser", "Princess Carolyn", "Princess Peach", "Princess Cake"],
     correctAnswer: 1
   },
 
   {
-    question: "What are you doing?",
-    answers: ["Trying new things", "Watching TV", "Sleeping", "Nothing"],
+    question: "In the game Doom, which planet is the space marine posted to after assaulting his commanding officer?",
+    answers: ["Earth", "Jupiter", "Mars", "Pluto"],
+    correctAnswer: 2
+  },
+  {
+    question: "In the game ‘Mortal Kombat’, what phrase is heard when Scorpion uses his spear?",
+    answers: ["Get outta here!", "Get over here!", "I'm outta here!", "Where are we?"],
+    correctAnswer: 1
+  },
+
+  {
+    question: "Which 1986 Nintendo game is set in the fantasy land of Hyrule, and centres on a boy named Link?",
+    answers: ["Zelda", "Kurbi", "Steet Fighter", "Excite Bike"],
+    correctAnswer: 0
+  },
+
+  {
+    question: "Jumpman’s goal is to save the Lady from the giant ape in which 1981 arcade game?",
+    answers: ["Mega Man", "Tecmo Bowl", "Super Mario", "Donkey Kong"],
     correctAnswer: 3
-  }
+  },
+
+  {
+    question: "How many rows of aliens are there usually at the start of a ‘Space Invaders’ game?",
+    answers: ["5", "8", "6", "7"],
+    correctAnswer: 0
+  },
+
+  {
+    question: "What month and year was the Atari released?",
+    answers: ["September 1977", "October 1973", "June 1982", "December 1999"],
+    correctAnswer: 0
+  },
 ]
 
 
@@ -51,7 +86,6 @@ $(function start() {
     $(this).css("background-color", "#72f7fa")
     $(".footer").show();
     round++;
-    console.log(round);
     timer();
     var currentQuestion = questionGen()
     $(".question").html(currentQuestion.question);
@@ -79,8 +113,8 @@ $(function start() {
         $(".answersDiv").hide()
         $(".question").hide()
         correctGuess++;
-        round ++;
-        if (round >= 4) {
+        round++;
+        if (round >= 11) {
           gameOver();
 
         }
@@ -98,8 +132,8 @@ $(function start() {
         $(".answersDiv").hide()
         $(".question").hide()
         wrongAnswers++;
-        round ++;
-        if (round >= 4) {
+        round++;
+        if (round >= 11) {
          gameOver();
         }
         else {
@@ -128,17 +162,18 @@ $(function start() {
         wrongAnswers = 0;
         notAnswered = 0;
         round = 0;
+        rountd++;
         $(".wrongRight").empty();
         $(".score").hide();
         $(".countDown").empty();
-        $(".correctAns").hide();
-        $(".wrongAns").hide();
-        $(".notAns").hide();
       }
       )
     }
 
     function nextQuestion() {
+      $(".correctAns").hide();
+      $(".wrongAns").hide();
+      $(".notAns").hide();
       $(".countDown").off("click");
       clearInterval(interval);
       counter = 21;
@@ -154,7 +189,6 @@ $(function start() {
         $(".answersDiv").html(answers);
         $(".answerOption").hover(function (e) {
           $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent");
-
         })
       }
     }
@@ -184,7 +218,7 @@ $(function start() {
           $(".wrongRight").html("Out of Time!!");
           $(".answersDiv").hide()
           $(".question").hide()
-          if (round >= 4) {
+          if (round >= 11) {
             gameOver();
             console.log(round)
 
