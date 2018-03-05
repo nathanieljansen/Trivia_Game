@@ -9,6 +9,7 @@ var gameStartAudio = new Audio("http://soundfxcenter.com/video-games/pacman/8d82
 var timeRunningOut = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Siren_Sound_Effect.mp3")
 var wrongAnSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Dies_Sound_Effect.mp3")
 var rightAnSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Eating_Ghost_Sound_Effect.mp3")
+var endGameSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Extra_Live_Sound_Effect.mp3")
 var questionsArr = [
   {
     question: "In video games, what colour is Pac-Man?",
@@ -122,6 +123,7 @@ $(function start() {
         console.log(correctGuess);
         round++;
         if (round >= 11) {
+          endGameSound.play();
           gameOver();
 
         }
@@ -142,6 +144,7 @@ $(function start() {
         wrongAnswers++;
         round++;
         if (round >= 11) {
+          endGameSound.play();
           gameOver();
         }
         else {
@@ -165,6 +168,7 @@ $(function start() {
       counter = 21;
       interval = 0;
       $(".countDown").on("click", function () {
+        gameStartAudio.play();
         correctGuess = 0;
         wrongAnswers = 0;
         notAnswered = 0;
@@ -230,8 +234,8 @@ $(function start() {
           $(".answersDiv").hide()
           $(".question").hide()
           if (round >= 11) {
+            endGameSound.play();
             gameOver();
-            console.log(round)
 
           }
           else {
