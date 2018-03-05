@@ -5,6 +5,10 @@ var notAnswered = 0;
 var round = 0;
 var counter = 21;
 var interval;
+var gameStartAudio = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Opening_Song_Sound_Effect.mp3")
+var timeRunningOut = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Siren_Sound_Effect.mp3")
+var wrongAnSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Dies_Sound_Effect.mp3")
+var rightAnSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Eating_Ghost_Sound_Effect.mp3")
 var questionsArr = [
   {
     question: "In video games, what colour is Pac-Man?",
@@ -82,6 +86,7 @@ $(function start() {
   $(".notAns").hide();
 
   $(".question").on("click", function () {
+    gameStartAudio.play();
     $(this).unbind();
     $(this).css("background-color", "#72f7fa")
     $(".footer").show();
@@ -105,6 +110,7 @@ $(function start() {
       $(this).unbind();
       var index = $(this).index();
       if (index === currentQuestion.correctAnswer) {
+        rightAnSound.play();
         $(".correctAns").hide();
         $(".wrongAns").hide();
         $(".notAns").hide();
@@ -124,6 +130,7 @@ $(function start() {
         }
       }
       else if (index != currentQuestion.correctAnswer) {
+        wrongAnSound.play();
         $(this).unbind();
         $(".correctAns").hide();
         $(".wrongAns").hide();
@@ -203,10 +210,13 @@ $(function start() {
         if (counter > 1) {
           $(".countDown").html(counter + " Seconds Left")
         }
-        if (counter <= "20") {
+        if (counter <= 20) {
           $(".answersDiv").show()
           $(".wrongRight").hide();
           $(".question").show()
+        }
+        if (counter === 5) {
+          timeRunningOut.play();
         }
         if (counter === 1) {
           $(".countDown").html(counter + " Second Left")
