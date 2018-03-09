@@ -62,13 +62,16 @@ var questionsArr = [
     question: "What month and year was the Atari released?",
     answers: ["September 1977", "October 1973", "June 1982", "December 1999"],
     correctAnswer: 0
-  },
+  }
 ]
+
 
 
 function questionGen() {
   var randomQuestion = questionsArr[Math.floor(Math.random() * questionsArr.length)];
   return randomQuestion;
+  
+  
 }
 
 $(function start() {
@@ -87,13 +90,15 @@ $(function start() {
   $(".notAns").hide();
 
   $(".question").on("click", function () {
+    
     gameStartAudio.play();
     $(this).unbind();
     $(this).css("background-color", "#72f7fa")
     $(".footer").show();
     round++;
     timer();
-    var currentQuestion = questionGen()
+    var currentQuestion = questionGen();
+    console.log(currentQuestion);
     $(".question").html(currentQuestion.question);
     var answers = [];
     var theseAnswers = currentQuestion.answers;
@@ -107,10 +112,15 @@ $(function start() {
     })
 
     $(".answersDiv").on("click", ".answerOption", function () {
+      console.log(questionsArr.indexOf(currentQuestion));
+      var removedQuestion = questionsArr.indexOf(currentQuestion);
+      questionsArr.splice(removedQuestion );
       $(".countDown").off("click");
+      console.log(questionsArr)
       $(this).unbind();
       var index = $(this).index();
       if (index === currentQuestion.correctAnswer) {
+       
         rightAnSound.play();
         $(".correctAns").hide();
         $(".wrongAns").hide();
@@ -120,7 +130,6 @@ $(function start() {
         $(".answersDiv").hide()
         $(".question").hide()
         correctGuess++;
-        console.log(correctGuess);
         round++;
         if (round >= 11) {
           endGameSound.play();
@@ -129,6 +138,7 @@ $(function start() {
         }
         else {
           nextQuestion();
+          
         }
       }
       else if (index != currentQuestion.correctAnswer) {
@@ -149,6 +159,7 @@ $(function start() {
         }
         else {
           nextQuestion();
+          
         }
       }
     })
@@ -182,7 +193,8 @@ $(function start() {
       )
     }
 
-    function nextQuestion() {
+    function nextQuestion() { 
+      
       $(".correctAns").hide();
       $(".wrongAns").hide();
       $(".notAns").hide();
@@ -192,6 +204,7 @@ $(function start() {
       interval = 0;
       timer();
       currentQuestion = questionGen();
+      
       $(".answerOption").empty()
       $(".question").html(currentQuestion.question);
       var answers = [];
