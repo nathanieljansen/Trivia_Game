@@ -5,6 +5,7 @@ var notAnswered = 0;
 var round = 0;
 var counter = 21;
 var interval;
+
 var gameStartAudio = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Opening_Song_Sound_Effect.mp3")
 var timeRunningOut = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Siren_Sound_Effect.mp3")
 var wrongAnSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Dies_Sound_Effect.mp3")
@@ -62,8 +63,15 @@ var questionsArr = [
     question: "What month and year was the Atari released?",
     answers: ["September 1977", "October 1973", "June 1982", "December 1999"],
     correctAnswer: 0
+  },
+
+  {
+    question: "What color is the sky?",
+    answers: ["Yellow", "Orange", "Blue", "Pink"],
+    correctAnswer: 2
   }
 ]
+var questionAgain = questionsArr;
 
 
 
@@ -114,7 +122,7 @@ $(function start() {
     $(".answersDiv").on("click", ".answerOption", function () {
       console.log(questionsArr.indexOf(currentQuestion));
       var removedQuestion = questionsArr.indexOf(currentQuestion);
-      questionsArr.splice(removedQuestion );
+      questionsArr.splice(removedQuestion, 1);
       $(".countDown").off("click");
       console.log(questionsArr)
       $(this).unbind();
@@ -165,6 +173,7 @@ $(function start() {
     })
 
     function gameOver() {
+      var questionArr = questionAgain;
       $(".correctAns").show();
       $(".wrongAns").show();
       $(".notAns").show();
@@ -194,7 +203,6 @@ $(function start() {
     }
 
     function nextQuestion() { 
-      
       $(".correctAns").hide();
       $(".wrongAns").hide();
       $(".notAns").hide();
