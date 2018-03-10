@@ -221,7 +221,7 @@ $(function start() {
 
         {
           question: "Why do Mushrooms make Mario grow",
-          answers: ["A Refrence to Magic Mushrooms", "It's Like Spinach for the Body", "It's Just a Game", "Ask Alexa"],
+          answers: ["Magic Mushrooms Bro", "It's Like Spinach for the Body", "It's Just a Game", "Ask Alexa"],
           correctAnswer: 0
         }
       ]
