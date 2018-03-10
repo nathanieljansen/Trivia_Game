@@ -3,7 +3,7 @@ var correctGuess = 0;
 var wrongAnswers = 0;
 var notAnswered = 0;
 var round = 0;
-var counter = 21;
+var counter = 15;
 var interval;
 
 var gameStartAudio = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Opening_Song_Sound_Effect.mp3")
@@ -71,7 +71,6 @@ var questionsArr = [
     correctAnswer: 2
   }
 ]
-var questionAgain = questionsArr;
 
 
 
@@ -83,9 +82,6 @@ function questionGen() {
 }
 
 $(function start() {
-
-
-
   $(".question").html("Click Here to Start the Game!");
   $(".question").hover(function (e) {
     $(this).css("background-color", e.type === "mouseenter" ? "#d58ab2" : "transparent")
@@ -98,7 +94,6 @@ $(function start() {
   $(".notAns").hide();
 
   $(".question").on("click", function () {
-    
     gameStartAudio.play();
     $(this).unbind();
     $(this).css("background-color", "#72f7fa")
@@ -120,11 +115,8 @@ $(function start() {
     })
 
     $(".answersDiv").on("click", ".answerOption", function () {
-      console.log(questionsArr.indexOf(currentQuestion));
-      var removedQuestion = questionsArr.indexOf(currentQuestion);
-      questionsArr.splice(removedQuestion, 1);
+      removeQuestion();
       $(".countDown").off("click");
-      console.log(questionsArr)
       $(this).unbind();
       var index = $(this).index();
       if (index === currentQuestion.correctAnswer) {
@@ -173,7 +165,66 @@ $(function start() {
     })
 
     function gameOver() {
-      var questionArr = questionAgain;
+      questionsArr = [
+        {
+          question: "In video games, what colour is Pac-Man?",
+          answers: ["Pink", "Orange", "Blue", "Yellow"],
+          correctAnswer: 3
+        },
+
+        {
+          question: "How many square blocks is each game piece composed of in the game of Tetris?",
+          answers: ["4", "7", "6", "5"],
+          correctAnswer: 0
+        },
+
+        {
+          question: "In video gaming, what is the name of the princess whom Mario repeatedly stops Bowser from kidnapping?",
+          answers: ["Princess Bowser", "Princess Carolyn", "Princess Peach", "Princess Cake"],
+          correctAnswer: 2
+        },
+
+        {
+          question: "In the game Doom, which planet is the space marine posted to after assaulting his commanding officer?",
+          answers: ["Earth", "Jupiter", "Mars", "Pluto"],
+          correctAnswer: 2
+        },
+        {
+          question: "In the game ‘Mortal Kombat’, what phrase is heard when Scorpion uses his spear?",
+          answers: ["Get outta here!", "Get over here!", "I'm outta here!", "Where are we?"],
+          correctAnswer: 1
+        },
+
+        {
+          question: "Which 1986 Nintendo game is set in the fantasy land of Hyrule, and centres on a boy named Link?",
+          answers: ["Zelda", "Kurbi", "Steet Fighter", "Excite Bike"],
+          correctAnswer: 0
+        },
+
+        {
+          question: "Jumpman’s goal is to save the Lady from the giant ape in which 1981 arcade game?",
+          answers: ["Mega Man", "Tecmo Bowl", "Super Mario", "Donkey Kong"],
+          correctAnswer: 3
+        },
+
+        {
+          question: "How many rows of aliens are there usually at the start of a ‘Space Invaders’ game?",
+          answers: ["5", "8", "6", "7"],
+          correctAnswer: 0
+        },
+
+        {
+          question: "What month and year was the Atari released?",
+          answers: ["September 1977", "October 1973", "June 1982", "December 1999"],
+          correctAnswer: 0
+        },
+
+        {
+          question: "What color is the sky?",
+          answers: ["Yellow", "Orange", "Blue", "Pink"],
+          correctAnswer: 2
+        }
+      ]
       $(".correctAns").show();
       $(".wrongAns").show();
       $(".notAns").show();
@@ -185,7 +236,7 @@ $(function start() {
       $(".countDown").html("Click to Start Again");
       $(".score").html("Correct:" + correctGuess + " Wrong:" + wrongAnswers + " Not Answered:" + notAnswered);
       clearInterval(interval);
-      counter = 21;
+      counter = 15;
       interval = 0;
       $(".countDown").on("click", function () {
         gameStartAudio.play();
@@ -202,13 +253,20 @@ $(function start() {
       )
     }
 
+    function removeQuestion(){
+      console.log(questionsArr.indexOf(currentQuestion));
+      var removedQuestion = questionsArr.indexOf(currentQuestion);
+      questionsArr.splice(removedQuestion, 1);
+    }
+
     function nextQuestion() { 
+      console.log(questionsArr)
       $(".correctAns").hide();
       $(".wrongAns").hide();
       $(".notAns").hide();
       $(".countDown").off("click");
       clearInterval(interval);
-      counter = 21;
+      counter = 15;
       interval = 0;
       timer();
       currentQuestion = questionGen();
@@ -227,15 +285,15 @@ $(function start() {
     }
 
     function timer() {
-
-      counter = 21;
+      $(".countDown").html(counter + " Seconds Left")
+      counter = 15;
       interval = 0;
       interval = setInterval(function () {
         counter--;
         if (counter > 1) {
           $(".countDown").html(counter + " Seconds Left")
         }
-        if (counter <= 20) {
+        if (counter <= 15) {
           $(".answersDiv").show()
           $(".wrongRight").hide();
           $(".question").show()
@@ -247,6 +305,7 @@ $(function start() {
           $(".countDown").html(counter + " Second Left")
         }
         if (counter === 0) {
+          removeQuestion()
           notAnswered++;
           round++;
           $(".countDown").html(counter + " Seconds Left")
