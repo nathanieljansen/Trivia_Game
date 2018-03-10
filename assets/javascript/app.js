@@ -13,37 +13,37 @@ var rightAnSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5
 var endGameSound = new Audio("http://soundfxcenter.com/video-games/pacman/8d82b5_Pacman_Extra_Live_Sound_Effect.mp3")
 var questionsArr = [
   {
-    question: "In video games, what colour is Pac-Man?",
-    answers: ["Pink", "Orange", "Blue", "Yellow"],
-    correctAnswer: 3
-  },
-
-  {
-    question: "How many square blocks is each game piece composed of in the game of Tetris?",
-    answers: ["4", "7", "6", "5"],
+    question: "What inspired Pac-Man's shape",
+    answers: ["Pizza", "The Moon", "A Tire", "An Excel Pie Chart"],
     correctAnswer: 0
   },
 
   {
-    question: "In video gaming, what is the name of the princess whom Mario repeatedly stops Bowser from kidnapping?",
-    answers: ["Princess Bowser", "Princess Carolyn", "Princess Peach", "Princess Cake"],
+    question: "Originally Pac-Man was goin to be called?",
+    answers: ["Pac-Man", "Mega Man", "Dot Eater", "Puck Man"],
+    correctAnswer: 3
+  },
+
+  {
+    question: "Pac-Man was originally created for?",
+    answers: ["Everyone", "A Guy Name Frank", "Women", "The King of England"],
     correctAnswer: 2
   },
 
   {
-    question: "In the game Doom, which planet is the space marine posted to after assaulting his commanding officer?",
-    answers: ["Earth", "Jupiter", "Mars", "Pluto"],
-    correctAnswer: 2
+    question: "Mario was originally going to carry?",
+    answers: ["Luigi", "A Gun", "Some Purple Drank", "A Flower for the Princess"],
+    correctAnswer: 1
   },
   {
-    question: "In the game ‘Mortal Kombat’, what phrase is heard when Scorpion uses his spear?",
+    question: "In the game Mortal Kombat, what phrase is heard when Scorpion uses his spear?",
     answers: ["Get outta here!", "Get over here!", "I'm outta here!", "Where are we?"],
     correctAnswer: 1
   },
 
   {
-    question: "Which 1986 Nintendo game is set in the fantasy land of Hyrule, and centres on a boy named Link?",
-    answers: ["Zelda", "Kurbi", "Steet Fighter", "Excite Bike"],
+    question: "Who was the inspiration behind Mortal Combat?",
+    answers: ["Jean Claud Van Damme", "Some Ninja", "Steet Fighter", "The Creators Nephew"],
     correctAnswer: 0
   },
 
@@ -60,15 +60,15 @@ var questionsArr = [
   },
 
   {
-    question: "What month and year was the Atari released?",
-    answers: ["September 1977", "October 1973", "June 1982", "December 1999"],
-    correctAnswer: 0
+    question: "What month and year was the NES released?",
+    answers: ["September 1987", "October 1983", "June 1982", "July 1983"],
+    correctAnswer: 3
   },
 
   {
-    question: "What color is the sky?",
-    answers: ["Yellow", "Orange", "Blue", "Pink"],
-    correctAnswer: 2
+    question: "Why do Mushrooms make Mario grow",
+    answers: ["A Refrence to Magic Mushrooms", "It's Like Spinach for the Body", "It's Just a Game", "Ask Alexa"],
+    correctAnswer: 0
   }
 ]
 
@@ -167,37 +167,37 @@ $(function start() {
     function gameOver() {
       questionsArr = [
         {
-          question: "In video games, what colour is Pac-Man?",
-          answers: ["Pink", "Orange", "Blue", "Yellow"],
-          correctAnswer: 3
-        },
-
-        {
-          question: "How many square blocks is each game piece composed of in the game of Tetris?",
-          answers: ["4", "7", "6", "5"],
+          question: "What inspired Pac-Man's shape",
+          answers: ["Pizza", "The Moon", "A Tire", "An Excel Pie Chart"],
           correctAnswer: 0
         },
 
         {
-          question: "In video gaming, what is the name of the princess whom Mario repeatedly stops Bowser from kidnapping?",
-          answers: ["Princess Bowser", "Princess Carolyn", "Princess Peach", "Princess Cake"],
+          question: "Originally Pac-Man was goin to be called?",
+          answers: ["Pac-Man", "Mega Man", "Dot Eater", "Puck Man"],
+          correctAnswer: 3
+        },
+
+        {
+          question: "Pac-Man was originally created for?",
+          answers: ["Everyone", "A Guy Name Frank", "Women", "The King of England"],
           correctAnswer: 2
         },
 
         {
-          question: "In the game Doom, which planet is the space marine posted to after assaulting his commanding officer?",
-          answers: ["Earth", "Jupiter", "Mars", "Pluto"],
-          correctAnswer: 2
+          question: "Mario was originally going to carry?",
+          answers: ["Luigi", "A Gun", "Some Purple Drank", "A Flower for the Princess"],
+          correctAnswer: 1
         },
         {
-          question: "In the game ‘Mortal Kombat’, what phrase is heard when Scorpion uses his spear?",
+          question: "In the game Mortal Kombat, what phrase is heard when Scorpion uses his spear?",
           answers: ["Get outta here!", "Get over here!", "I'm outta here!", "Where are we?"],
           correctAnswer: 1
         },
 
         {
-          question: "Which 1986 Nintendo game is set in the fantasy land of Hyrule, and centres on a boy named Link?",
-          answers: ["Zelda", "Kurbi", "Steet Fighter", "Excite Bike"],
+          question: "Who was the inspiration behind Mortal Combat?",
+          answers: ["Jean Claud Van Damme", "Some Ninja", "Steet Fighter", "The Creators Nephew"],
           correctAnswer: 0
         },
 
@@ -214,15 +214,15 @@ $(function start() {
         },
 
         {
-          question: "What month and year was the Atari released?",
-          answers: ["September 1977", "October 1973", "June 1982", "December 1999"],
-          correctAnswer: 0
+          question: "What month and year was the NES released?",
+          answers: ["September 1987", "October 1983", "June 1982", "July 1983"],
+          correctAnswer: 3
         },
 
         {
-          question: "What color is the sky?",
-          answers: ["Yellow", "Orange", "Blue", "Pink"],
-          correctAnswer: 2
+          question: "Why do Mushrooms make Mario grow",
+          answers: ["A Refrence to Magic Mushrooms", "It's Like Spinach for the Body", "It's Just a Game", "Ask Alexa"],
+          correctAnswer: 0
         }
       ]
       $(".correctAns").show();
