@@ -267,7 +267,6 @@ $(function start() {
       $(".countDown").off("click");
       clearInterval(interval);
       counter = 15;
-      interval = 0;
       timer();
       currentQuestion = questionGen();
       
@@ -287,7 +286,6 @@ $(function start() {
     function timer() {
       $(".countDown").html(counter + " Seconds Left")
       counter = 15;
-      interval = 0;
       interval = setInterval(function () {
         counter--;
         if (counter > 1) {
